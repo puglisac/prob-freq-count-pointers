@@ -1,190 +1,148 @@
-## Sorting
-### bubbleSort
-Implement a function called bubbleSort. Given an array, bubbleSort will sort the values in the array.
+## Problem Solving
 
-Bubble sort is an O(n^2) algorithm. You can learn about Bubble Sort
+### constructNote
+Write a function called constructNote, which accepts two strings, a message and some letters. The function should return true if the message can be built with the letters that you are given; otherwise, it should return false.
 
-```
-bubbleSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-bubbleSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-bubbleSort([1, 2, 3]); // [1, 2, 3]
-bubbleSort([]);
+Assume that there are only lowercase letters and no space or special characters in both the message and the letters.
 
-let nums = [
-    4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34,
-    23, 2, 453, 546, 75, 67, 4342, 32
-];
+#### Constraints:
 
-bubbleSort(nums); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34, 35, 43, 67,
-                  // 75, 232, 232, 453, 546, 4342]
-```
+Time Complexity: O(M + N) - If M is the length of message and N is the length of letters:
 
-### merge
-Given two sorted arrays, write a function called merge which accepts two sorted arrays and returns a new array with values from both arrays sorted.
-
-This function should run in O(n + m) time and O(n + m) space and should not modify the parameters passed to it.
-
-Also, do not use the built in .sort() method! We’re going to use this function to implement a sort, so the helper itself shouldn’t depend on a sort.
+#### Examples:
 
 ```
-let arr1 = [1,3,4,5];
-let arr2 = [2,4,6,8];
-merge(arr1,arr2) // [1,2,3,4,4,5,6,8]
-
-arr1 // [1,3,4,5];
-arr2 // [2,4,6,8];
-
-let arr3 = [-2,-1,0,4,5,6];
-let arr4 = [-3,-2,-1,2,3,5,7,8];
-
-merge(arr3,arr4); // [-3,-2,-2,-1,-1,0,2,3,4,5,5,6,7,8]
-
-let arr5 = [3,4,5]
-let arr6 = [1,2]
-
-merge(arr5,arr6) // [1,2,3,4,5]
+constructNote('aa', 'abc') // false
+constructNote('abc', 'dcba') // true
+constructNote('aabbcc', 'bcabcaddff') // true
 ```
+### averagePair
+Write a function called averagePair. Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
 
-### mergeSort
-Implement the merge sort algorithm. Given an array, this algorithm will sort the values in the array. Here’s some guidance for how merge sort should work:
 
-Break up the array into halves until you can compare one value with another
-Once you have smaller sorted arrays, merge those with other sorted pairs until you are back at the full length of the array
-Once the array is merged back together, return the merged (and sorted!) array
-In order to implement this function, you’ll also need to implement a merge function that takes in two sorted arrays and returns a new sorted array. You implemented this function in the previous exercise, so use that function!
+#### Constraints:
+
+Time Complexity: O(N)
+
+#### Examples:
 
 ```
-mergeSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-mergeSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-mergeSort([1, 2, 3]); // [1, 2, 3]
-mergeSort([]);
-
-let nums = [
-    4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23, 2,
-    453, 546, 75, 67, 4342, 32
-];
-
-mergeSort(nums); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34, 35,
-                 //  43, 67, 75, 232, 232, 453, 546, 4342]
+averagePair([1, 2, 3], 2.5); // true
+averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8); // true
+averagePair([-1, 0, 3, 4, 5, 6], 4.1); // false
+averagePair([], 4); // false
 ```
 
-### insertionSort
-Here’s some guidance for how insertion sort should work:
+### twoArrayObject
+Write a function called twoArrayObject which accepts two arrays of varying lengths.The first array consists of keys and the second one consists of values. Your function should return an object created from the keys and values. If there are not enough values, the rest of keys should have a value of null. If there not enough keys, just ignore the rest of values.
 
-Start by picking the second element in the array (we will assume the first element is the start of the “sorted” portion)
-Now compare the second element with the one before it and swap if necessary.
-Continue to the next element and if it is in the incorrect order, iterate through the sorted portion to place the element in the correct place.
-Repeat until the array is sorted.
+#### Examples:
 
 ```
-insertionSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-insertionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-insertionSort([1, 2, 3]); // [1, 2, 3]
-insertionSort([]);
-
-let nums = [
-    4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23, 2,
-    453, 546, 75, 67, 4342, 32
-];
-
-insertionSort(nums); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34,
-                     //  34, 35, 43, 67, 75, 232, 232, 453, 546, 4342]
-```
-                     
-### selectionSort
-Here’s some guidance for how selection sort should work:
-
-Assign the first element to be the smallest value (this is called the minimum). It does not matter right now if this actually the smallest value in the array.
-Compare this item to the next item in the array until you find a smaller number.
-If a smaller number is found, designate that smaller number to be the new “minimum” and continue until the end of the array.
-If the “minimum” is not the value (index) you initially began with, swap the two values. You will now see that the beginning of the array is in the correct order (similar to how after the first iteration of bubble sort, we know the rightmost element is in its correct place).
-Repeat this with the next element until the array is sorted.
-This algorithm has a O(n^2) time complexity.
-
-```
-selectionSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-selectionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-selectionSort([1, 2, 3]); // [1, 2, 3]
-selectionSort([]);
-
-let nums = [
-    4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23, 2,
-    453, 546, 75, 67, 4342, 32
-];
-
-selectionSort(nums); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34,
-                     //  35, 43, 67, 75, 232, 232, 453, 546, 4342]
+twoArrayObject(['a', 'b', 'c', 'd'], [1, 2, 3]) // {'a': 1, 'b': 2, 'c': 3, 'd': null}
+twoArrayObject(['a', 'b', 'c'], [1, 2, 3, 4]) // {'a': 1, 'b': 2, 'c': 3}
+twoArrayObject(['x', 'y', 'z'], [1, 2]) // {'x': 1, 'y': 2, 'z': null}
 ```
 
-### pivot
-In this exercise, your goal is to implement a function called pivot. This function contains nearly all of the logic you’ll need in order to implement Quick Sort in the next exercise.
+### sameFrequency
+Write a function called sameFrequency. Given two positive integers, find out if the two numbers have the same frequency of digits.
 
-The pivot function is responsible for taking an array, setting the pivot value, and mutating the array so that all values less than the pivot wind up to the left of it, and all values greater than the pivot wind up to the right of it. It’s also helpful if this helper returns the index of where the pivot value winds up.
-
-For example, if we decide the pivot will always be the first element in the array, it should behave in the following way:
+####Examples:
 
 ```
-let arr = [4, 2, 5, 3, 6];
-pivot(arr); // 2
-arr; // [3, 2, 4, 5, 6];
+sameFrequency(182,281) // true
+sameFrequency(34,14) // false
+sameFrequency(3589578, 5879385) // true
+sameFrequency(22,222) // false
 ```
 
-In this code, the specifics of how the arr variable gets mutated are not important. All that matters is that 4 winds up at index 2, with 3 and 2 to the left of it (in any order), and with 5 and 6 to the right of it (in any order).
+#### Constraints
+
+Time Complexity - O(N + M)
+
+### separatePositive
+Write a function called separatePositive which accepts an array of non-zero integers. Separate the positive integers to the left and the negative integers to the right. The positive numbers and negative numbers need not be in sorted order. The problem should be done in place (in other words, do not build a copy of the input array).
+
+#### Examples:
 
 ```
-let arr1 = [5, 4, 9, 10, 2, 20, 8, 7, 3];
-let arr2 = [8, 4, 2, 5, 0, 10, 11, 12, 13, 16];
-
-pivot(arr1); // 3
-pivot(arr2); // 4
-
-arr1.slice(0, 3).sort((a, b) => a - b); // [2, 3, 4]
-arr1.slice(3).sort((a, b) => a - b); // [5, 7, 8, 9, 10, 20]
-
-arr2.slice(0, 4).sort((a, b) => a - b); // [0, 2, 4, 5]
-arr2.slice(4).sort((a, b) => a - b); // [8, 10, 11, 12, 13, 16]
+separatePositive([2, -1, -3, 6, -8, 10]) // [2, 10, 6, -3, -1, -8]
+separatePositive([5, 10, -15, 20, 25]) // [5, 10, 25, 20, -15]
+separatePositive([-5, 5]) // [5, -5]
+separatePositive([1, 2, 3]) // [1, 2, 3]
 ```
 
-### quickSort
-The next sorting algorithm we’ll consider is Quick Sort. Unfortunately, quicksort is not the most intuitive of algorithms and has a wide range of implementations.
+#### Constraints
 
-The algorithm is as follows:
+Time Complexity: O(N)
 
-Pick an element in the array and designate it as the “pivot”. While there are quite a few options for choosing the pivot. We’ll make things simple to start, and will choose the pivot as the first element. This is not an ideal choice, but it makes the algorithm easier to understand for now.
-Next, compare every other element in the array to the pivot.
-If it’s less than the pivot value, move it to the left of the pivot.
-If it’s greater, move it to the right.
-Once you have finished comparing, the pivot will be in the right place.
-Next, recursively call quicksort again with the left and right halves from the pivot until the array is sorted.
-It’s easiest to implement Quick Sort with the aid of your pivot  helper from the earlier exercise. This function is responsible for taking an array, setting the pivot value, and mutating the array so that all values less than the pivot wind up to the left of it, and all values greater than the pivot wind up to the right of it. It’s also helpful if this helper returns the index of where the pivot value winds up.
+### isSubsequence
+Write a function called isSubsequence which takes in two strings and checks whether the characters in the first string form a subsequence of the characters in the second string. In other words, the function should check whether the characters in the first string appear somewhere in the second string, without their order changing.
+
+#### Examples:
 
 ```
-quickSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-quickSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-quickSort([1, 2, 3]); // [1, 2, 3]
-quickSort([]);
-
-let nums = [
-    4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23,
-    2, 453, 546, 75, 67, 4342, 32
-];
-
-quickSort(nums); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34,
-                 //  35, 43, 67, 75, 232, 232, 453, 546, 4342]
+isSubsequence('hello', 'hello world'); // true
+isSubsequence('sing', 'sting'); // true
+isSubsequence('abc', 'abracadabra'); // true
+isSubsequence('abc', 'acb'); // false (order matters)
 ```
-### radixSort
-Write a function called radixSort  which accepts an array of numbers and sorts them in ascending order.
+#### Constraints:
+
+Time Complexity - O(N + M)
+
+### countPairs
+Given an array of integers, and a number, find the number of pairs of integers in the array whose sum is equal to the second parameter. You can assume that there will be no duplicate values in the array.
+
+### Examples:
 
 ```
-radixSort([8, 6, 1, 12]);
-// [1, 6, 8, 12]
-
-radixSort([10, 100, 1, 1000, 10000000]);
-// [1, 10, 100, 1000, 10000000]
-
-radixSort([902, 4, 7, 408, 29, 9637, 1556, 3556, 8157, 4386, 86, 593]);
-// [4, 7, 29, 86, 408, 593, 902, 1556, 3556, 4386, 8157, 9637]
+countPairs([3,1,5,4,2], 6) // 2 (1,5 and 2,4)
+countPairs([10,4,8,2,6,0], 10) // 3 (2,8, 4,6, 10,0)
+countPairs([4,6,2,7], 10) // 1 (4,6)
+countPairs([1,2,3,4,5], 10) // 0
+countPairs([1,2,3,4,5], -3) // 0
+countPairs([0,-4],-4) // 1
+countPairs([1,2,3,0,-1,-2],0) // 2
 ```
+
+#### Constraints
+
+Time Complexity - O(N * log(N))
+
+or
+
+Time Complexity - O(N)
+
+
+### longestFall
+Write a function called longestFall, which accepts an array of integers, and returns the length of the longest consecutive decrease of integers.
+
+####Examples:
+
+```
+longestFall([5, 3, 1, 3, 0]) // 3, 5-3-1 is the longest consecutive sequence of decreasing integers
+longestFall([2, 2, 1]) // 2, 2-1 is the longest consecutive sequence of decreasing integers
+longestFall([2, 2, 2]) // 1, 2 is the longest consecutive sequence of decreasing integers
+longestFall([5, 4, 4, 4, 3, 2]) // 3, 4-3-2 is the longest
+longestFall([9, 8, 7, 6, 5, 6, 4, 2, 1]) // 5, 9-8-7-6-5 is the longest
+longestFall([]) // 0
+```
+
+### pivotIndex
+Write a function called pivotIndex which accepts an array of integers, and returns the pivot index where the sum of the items to the left equal to the sum of the items to the right. If there are more than one valid pivot index, return the smallest value.
+
+#### Examples:
+
+```
+pivotIndex([1,2,1,6,3,1]) // 3
+pivotIndex([5,2,7]) // -1  no valid pivot index
+pivotIndex([-1,3,-3,2]) // 1 valid pivot at 2: -1 + 3 = 2 however there is a smaller valid pivot at 1: -1 = -3 + 2
+```
+
+####Constraints
+
+Time Complexity: O(N)
 
 ## Installation
 To install, follow these steps:
